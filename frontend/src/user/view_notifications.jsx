@@ -62,7 +62,7 @@ const ViewNotifications = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("Fetched data:", data); // Log the fetched data to check its structure
+          // console.log("Fetched data:", data); // Log the fetched data to check its structure
 
           if (Array.isArray(data.value)) {
             setNotifications(data.value); // Set notifications if it's an array

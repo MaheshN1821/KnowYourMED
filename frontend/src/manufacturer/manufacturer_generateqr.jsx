@@ -97,12 +97,12 @@ const GenerateQR = () => {
 
     try {
       const newData = { ...formData, userId: userId };
-      console.log("Sending data to backend:", newData);
+      // console.log("Sending data to backend:", newData);
       const response = await axios.post(
         "https://know-your-med-backend.vercel.app/generate-qr",
         newData
       );
-      console.log("QR Code generated:", response.data.qrCode);
+      // console.log("QR Code generated:", response.data.qrCode);
       toast.success(translations[language].alert4);
       setQrCode(response.data.qrCode);
     } catch (error) {

@@ -80,7 +80,7 @@ const ContactUsPage = () => {
     event.preventDefault(); // Prevent page reload
 
     const feedbackDetails = { name, email, message };
-    console.log("Collected data for Backend:", feedbackDetails);
+    // console.log("Collected data for Backend:", feedbackDetails);
 
     try {
       const response = await fetch(

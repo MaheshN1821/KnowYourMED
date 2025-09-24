@@ -75,9 +75,6 @@ const ScanURL = () => {
 
   const handleLanguageChange = (e) => {
     setLanguage(e.target.value);
-    // window.location.reload();
-    // setMedicineInfoKannada(medicineInfo);
-    // console.log("I am changing language!");
   };
 
   useEffect(() => {

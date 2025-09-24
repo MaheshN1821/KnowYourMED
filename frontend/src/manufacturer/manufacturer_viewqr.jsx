@@ -61,12 +61,7 @@ function ManufacturerViewQR() {
       )
         .then((response) => response.json())
         .then((data) => {
-          console.log(data); // Log the response to see its structure
-          // if (Array.isArray(data)) {
-          //   setQrData(data); // Set QR data if it's an array
-          // } else {
-          //   console.error("Received unexpected data structure:", data);
-          // }
+          // console.log(data); // Log the response to see its structure
           setQrData(data?.value);
         })
         .catch((error) => {
