@@ -186,33 +186,7 @@ const handleUserLogin = async (req, res) => {
 };
 
 const handleUserLogout = async (req, res) => {
-  // const { userId } = req.body;
-  // const refToken = req?.cookies?.jwt;
-
-  // if (!refToken) {
-  //   return res.sendStatus(401);
-  // }
-
   try {
-    // const existingUser = await User.findOne({ refreshToken: refToken });
-
-    // if (!existingUser) {
-    //   res.clearCookie("jwt", {
-    //     httpOnly: true,
-    //     maxAge: 24 * 60 * 60 * 100,
-    //     secure: false,
-    //   });
-    //   return res.status(200).json({ message: "Logout Successfull!" });
-    // }
-
-    // await User.findByIdAndUpdate(userId, { refreshToken: "" }, { new: true });
-
-    // res.clearCookie("jwt", {
-    //   httpOnly: true,
-    //   maxAge: 24 * 60 * 60 * 100,
-    //   secure: false,
-    // });
-
     return res.status(204).json({ message: "Logout Successfull!" });
   } catch (err) {
     console.log(err);

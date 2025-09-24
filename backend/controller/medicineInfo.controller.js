@@ -2,14 +2,13 @@ import axios from "axios";
 import Qr from "../model/qr.js";
 
 const handleMedInfo = async (req, res) => {
-  const name = req.params.name.trim(); // Ensure the name is trimmed
+  const name = req.params.name.trim();
 
   try {
     // Request to OpenFDA API's drug/ndc endpoint
-    // const response = await axios.get("https://api.fda.gov/drug/ndc.json", {
     const response = await axios.get("https://api.fda.gov/drug/label.json", {
       params: {
-        search: `"${encodeURIComponent(name)}"`, // Encode the brand name
+        search: `"${encodeURIComponent(name)}"`,
         limit: 1,
       },
     });
@@ -20,14 +19,6 @@ const handleMedInfo = async (req, res) => {
     if (!medicine) {
       return res.status(404).json({ message: "Medicine not found" });
     }
-
-    // Extract relevant data
-    // const dosage = medicine.dosage_form || "No dosage information available";
-    // const ageGroup = medicine.route || "No route information available";
-    // const sideEffects =
-    //   medicine.marketing_category ||
-    //   "No marketing category information available";
-    // console.log(medicine);
 
     const dosage = medicine.dosage_and_administration
       ? medicine.dosage_and_administration[0]

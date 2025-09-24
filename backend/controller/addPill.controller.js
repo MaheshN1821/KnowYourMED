@@ -11,8 +11,8 @@ const handleUserNotify = async (
   email
 ) => {
   const reminderTimes = [timeOne, timeTwo, timeThree].filter(Boolean);
-  console.log(email);
-
+  console.log("From handleUserNotify while handling email notification", email);
+  console.log("I am inside handleUserNotify to handle email notification");
   // Create the transporter for sending emails
   const transporter = nodemailer.createTransport({
     service: "gmail", // Use your email service provider
@@ -57,7 +57,6 @@ const handleUserNotify = async (
       } else {
         console.log(`Stopping email job for ${email}, duration exceeded.`);
         job.stop(); // Stop the cron job
-        // await updateJobStatus(user.userId, false); // Update job status in DB if needed
       }
     });
   });

@@ -14,21 +14,19 @@ const handleQRCodeGeneration = async (req, res) => {
   } = req.body;
 
   try {
-    // Helper function to get the position of the nth occurrence of a character
     const getNthOccurrence = (str, char, n) => {
       let index = -1;
       for (let i = 0; i < n; i++) {
         index = str.indexOf(char, index + 1);
-        if (index === -1) break; // If fewer than n occurrences
+        if (index === -1) break;
       }
       return index;
     };
 
-    // Function to slice text till the 10th full stop
     const sliceText = (text) => {
       if (!text) return "No information available.";
       const index = getNthOccurrence(text, ".", 10);
-      return index !== -1 ? text.slice(0, index + 1) : text; // Include the 10th full stop
+      return index !== -1 ? text.slice(0, index + 1) : text;
     };
 
     const response = await axios.get(
@@ -51,8 +49,6 @@ const handleQRCodeGeneration = async (req, res) => {
         ),
       };
     }
-    // console.log("Med info : ", medicineInfo);
-
     const newQr = await Qr.create({
       medicine_name: medicine_name,
       expiry_date: expiry_date,
@@ -79,11 +75,8 @@ const handleQRCodeGeneration = async (req, res) => {
       "expiry date : " +
       expiry_date;
 
-    // console.log(text);
-    // console.log();
-
     const QRid = result?._id.toString();
-    const qrCode = await QRCode.toDataURL(text, { width: 94 }); // Generate QR code as a base64 string
+    const qrCode = await QRCode.toDataURL(text, { width: 94 });
 
     try {
       const objectId = new mongoose.Types.ObjectId(QRid);
@@ -98,7 +91,6 @@ const handleQRCodeGeneration = async (req, res) => {
       console.log(err);
       res.status(201).json({ qrCode });
     }
-    // res.status(201).json({ qrCode });
   } catch (err) {
     res.status(500).json({ error: "Failed to generate QR code" });
   }

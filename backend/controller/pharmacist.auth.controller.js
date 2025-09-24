@@ -133,12 +133,6 @@ const handlePharmacistLogin = async (req, res) => {
       expiresIn: 24 * 60 * 60 * 100,
     });
 
-    // res.cookie("jwt", refToken, {
-    //   httpOnly: true,
-    //   maxAge: 24 * 60 * 60 * 100,
-    //   secure: false,
-    // });
-
     const response = await Pharmacist.findByIdAndUpdate(
       existingUser._id,
       {
@@ -155,37 +149,7 @@ const handlePharmacistLogin = async (req, res) => {
 };
 
 const handlePharmacistLogout = async (req, res) => {
-  // const { id } = req.body;
-  // const refToken = req?.cookies?.jwt;
-
-  // if (!refToken) {
-  //   return res.sendStatus(403);
-  // }
-
   try {
-    // const existingUser = await Pharmacist.findOne({ refreshToken: refToken });
-
-    // if (!existingUser) {
-    //   res.clearCookie("jwt", {
-    //     httpOnly: true,
-    //     maxAge: 24 * 60 * 60 * 100,
-    //     secure: false,
-    //   });
-    //   return res.sendStatus(204);
-    // }
-
-    // await User.findByIdAndUpdate(
-    //   existingUser._id,
-    //   { refreshToken: "" },
-    //   { new: true }
-    // );
-
-    // res.clearCookie("jwt", {
-    //   httpOnly: true,
-    //   maxAge: 24 * 60 * 60 * 100,
-    //   secure: false,
-    // });
-
     return res.status(204).json({ message: "Logout Successfull!" });
   } catch (err) {
     console.log(err);
